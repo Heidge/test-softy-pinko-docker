@@ -1,0 +1,31 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: back-end/Dockerfile
+    image: softy-pinko-back-end:task6
+    ports:
+      - "5252"
+
+  frontend:
+    build:
+      context: .
+      dockerfile: front-end/Dockerfile
+    image: softy-pinko-front-end:task6
+    ports:
+      - "9000"
+    depends_on:
+      - backend
+
+  proxy:
+    build:
+      context: .
+      dockerfile: proxy/Dockerfile
+    image: softy-pinko-proxy:task6
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+      - frontend
+
+  

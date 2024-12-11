@@ -1,20 +1,20 @@
 services:
   backend:
     build:
-      context: ./back-end
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: back-end/Dockerfile
     image: softy-pinko-back-end:task4
-    container_name: softy_pinko_backend
     ports:
       - "5252:5252"
 
   frontend:
     build:
-      context: ./front-end
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: front-end/Dockerfile
     image: softy-pinko-front-end:task4
-    container_name: softy_pinko_frontend
     ports:
       - "9000:9000"
     depends_on:
       - backend
+
+  
